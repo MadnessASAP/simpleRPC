@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Arduino.h>
+#include <stddef.h>
 
 
 template <class T>
@@ -172,7 +172,7 @@ template <class T>
 void Vector<T>::resize(size_t const size) {
   T* data {new T[size]};
   swap_(data_, data);
-  copy_(data, min(size_, size));
+  copy_(data, (size_ < size ? size_ : size));
   delete[] data;
 
   size_ = size;

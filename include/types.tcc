@@ -1,5 +1,9 @@
 #pragma once
 
+#include <stddef.h>
+#include <stdint.h>
+
+#include "stream.h"
 #include "array.tcc"
 #include "tuple.tcc"
 #include "vector.tcc"
@@ -78,11 +82,13 @@ inline void rpcTypeOf(Stream& io, float) {
   rpcWrite(io, 'f');
 }
 
+#if defined(ARDUINO)
 /*! \ingroup types
  * \copydoc rpcTypeOf(Stream&, bool) */
 inline void rpcTypeOf(Stream& io, String&) {
   rpcWrite(io, 's');
 }
+#endif
 
 /*! \ingroup types
  * \copydoc rpcTypeOf(Stream&, bool) */

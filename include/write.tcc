@@ -1,5 +1,13 @@
 #pragma once
 
+#include <stddef.h>
+#include <stdint.h>
+#include <string.h>
+
+#include "stream.h"
+#if defined(ARDUINO)
+#include <Arduino.h>
+#endif
 #include "tuple.tcc"
 #include "vector.tcc"
 #include "array.tcc"
@@ -29,6 +37,7 @@ inline void rpcWrite(Stream& io, char const* data) {
   rpcWrite(io, '\0');
 }
 
+#if defined(ARDUINO)
 /*! \ingroup write
  * \copydoc rpcWrite(Stream&, T) */
 inline void rpcWrite(Stream& io, __FlashStringHelper const* data) {
@@ -38,6 +47,7 @@ inline void rpcWrite(Stream& io, __FlashStringHelper const* data) {
   }
   rpcWrite(io, '\0');
 }
+#endif
 
 
 /*! \ingroup write
@@ -64,12 +74,14 @@ inline void rpcWrite(Stream& io, char** data) {
   rpcWrite(io, (&data_));
 }
 
+#if defined(ARDUINO)
 /*! \ingroup write
  * \copydoc rpcWrite(Stream&, T) */
 inline void rpcWrite(Stream& io, String* data) {
   char const* data_ {(*data).c_str()};
   rpcWrite(io, &data_);
 }
+#endif
 
 
 /*! \ingroup write

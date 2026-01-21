@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 /*! Generic array.
  *
  * \tparam T Element type.

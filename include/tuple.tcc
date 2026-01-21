@@ -1,5 +1,7 @@
 #pragma once
 
+#include <stddef.h>
+
 #include "helper.tcc"
 
 //! \defgroup tuple

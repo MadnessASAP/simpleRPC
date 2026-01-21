@@ -1,5 +1,7 @@
 #pragma once
 
+#if defined(ARDUINO)
+#include <Arduino.h>
 #include <Stream.h>
 
 
@@ -19,3 +21,4 @@ private:
   uint8_t pin_;
   unsigned long delay_;
 };
+#endif

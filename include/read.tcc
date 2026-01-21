@@ -1,5 +1,12 @@
 #pragma once
 
+#include <stddef.h>
+#include <stdint.h>
+
+#include "stream.h"
+#if defined(ARDUINO)
+#include <Arduino.h>
+#endif
 #include "tuple.tcc"
 #include "vector.tcc"
 #include "array.tcc"
@@ -23,6 +30,7 @@ void rpcRead(Stream& io, T* data) {
 }
 
 
+#if defined(ARDUINO)
 /*! \ingroup read
  * \copydoc rpcRead(Stream&, T*) */
 inline void rpcRead(Stream& io, String* data) {
@@ -34,6 +42,7 @@ inline void rpcRead(Stream& io, String* data) {
     rpcRead(io, &c);
   }
 }
+#endif
 
 /*! \ingroup read
  * \copydoc rpcRead(Stream&, T*) */

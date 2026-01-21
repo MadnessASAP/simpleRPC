@@ -1,6 +1,7 @@
+#if defined(ARDUINO)
 #include <Arduino.h>
 
-#include "stream.h"
+#include "plugins/half_duplex/stream.h"
 
 
 HalfDuplexStream::HalfDuplexStream(
@@ -42,3 +43,4 @@ size_t HalfDuplexStream::write(uint8_t const* buffer, size_t size) {
 
   return result;
 }
+#endif

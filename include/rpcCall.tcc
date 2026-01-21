@@ -114,6 +114,7 @@ void call_(Stream& io, void (*)(char const*, Ts...), F f, Us&... args) {
   call_(io, f_, f, args..., data_);
 }
 
+#if defined(ARDUINO)
 //! \copydoc call_(Stream&, void (*)(T, Ts...), F, Us&...)
 template <class... Ts, class F, class... Us>
 void call_(Stream& io, void (*)(String&, Ts...), F f, Us&... args) {
@@ -123,6 +124,7 @@ void call_(Stream& io, void (*)(String&, Ts...), F f, Us&... args) {
   void (*f_)(Ts...) {};
   call_(io, f_, f, args..., data);
 }
+#endif
 
 //! \copydoc call_(Stream&, void (*)(T, Ts...), F, Us&...)
 template <class T, class... Ts, class F, class... Us>
